@@ -1,26 +1,65 @@
-abstract class User {
-    
-        constructor(
-            protected firstName:string,
-            protected lastname:string,
-            protected nickname:string
-        ) {}
-        abstract getNickName():void
-
-        getFullname(){
-            return '${this.firstName} ${this.lastname}'
-        }
-    
+type Words = {
+    [whatever: string]: string
 }
-class Player extends User{
-    getNickName() {
-        console.log(this.nickname)
+
+
+class Dict {
+    private words: Words
+    constructor() {
+        this.words = {}
     }
+    add(word: Word) {
+        if (this.words[word.term] === undefined) {
+            this.words[word.term] = word.def;
+        }
+    }
+    def(term: string) {
+        return this.words[term]
+
     }
 
+}
+
+class Word {
+    constructor(
+        public readonly term: string,
+        public readonly def: string
+    ) { }
+}
+
+const kimchi = new Word("kimchi", "한식");
+
+const dict = new Dict()
+
+dict.add(kimchi);
+dict.def("kimchi")
+
+//-------------------------------//
+
+type Team = "red" | "blue" | "yellow"
+type Health = 1 | 5 | 10
+
+//type Player = {
+interface Player {
+    nickname: string,
+    team: Team
+    health: Health
+
+}
 
 
+const nico : Player = {
+    nickname: "니꼬",
+    team : "yellow",
+    health : 10
+}
 
-const nico = new Player("nico","las","니꼬");
+//-------------------------------//
 
-nico.getFullname
+interface User {
+    name : string
+}
+
+interface Player2 extends User {
+
+}

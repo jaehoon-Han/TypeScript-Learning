@@ -243,3 +243,29 @@ let output = identity("myString"); // 두 번째 방법
 private 　 　　　⭕　　　　　　　❌　　　　　❌
 protected 　　　⭕　　　　　　　⭕　　　　　❌
 public　　　　　⭕　　　　　　　⭕　　　　　⭕
+
+
+####
+Cannot redeclare block-scoped variable 에러 해결
+
+Typescript에서 name이라는 변수를 만들려고 하니 이런 오류가 발생했다.
+
+Cannot redeclare block-scoped variable 'name'
+
+ 
+
+tsconfig.json 파일에 아래 내용을 추가하면 된다.
+
+ 
+
+"compilerOptions": {
+        "lib" : [ "ES2015"]
+    }
+타입스크립트는 global execution environment에서 DOM 타이핑을 사용해서
+
+ 이미 전역 변수로 선언되어 있을 수 있다.
+
+이럴 때는 변수를 renaming 하던지  ts 모듈을 사용해, export해서 전역 환경과 분리
+
+혹은 컴파일러 옵션을 변경해 DOM typing을 제거하는 방법으로 해결할 수 있다. 
+###
