@@ -268,4 +268,19 @@ tsconfig.json 파일에 아래 내용을 추가하면 된다.
 이럴 때는 변수를 renaming 하던지  ts 모듈을 사용해, export해서 전역 환경과 분리
 
 혹은 컴파일러 옵션을 변경해 DOM typing을 제거하는 방법으로 해결할 수 있다. 
+
+||
+typescript 에서 변수 선언을 하면 에러가 발생합니다.
+
+cannot redeclare block-scoped variable 'name'
+
+이 때 해결할 수 있는 방법은, 빈 object 를 export 해주면 됩니다.
 ###
+
+[Typescript] error TS2300: Duplicate identifier 에러
+tsconfig.json 파일에 아래 코드 추가해주기
+
+"skipLibCheck": true,
+또는
+
+중복 node_modules 폴더 찾아 삭제해주기
